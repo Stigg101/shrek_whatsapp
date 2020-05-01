@@ -22,6 +22,10 @@ while loaded == 0:
     time.sleep(2)
 
 shrek =[]
-actions = ActionChains(driver)
-actions.send_keys('This is a test of the shrek script', Keys.ENTER)
-actions.perform()
+with open('shrek.txt', 'r') as f:
+    for line in f.readlines():
+        for word in line.split():
+            actions = ActionChains(driver)
+            actions.send_keys(word, Keys.ENTER)
+            actions.perform()
+            time.sleep(1)
